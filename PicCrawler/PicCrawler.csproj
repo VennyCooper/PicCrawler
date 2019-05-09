@@ -43,9 +43,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common.cs" />
-    <Compile Include="HtmlParsers\HtmlParser.cs" />
+    <Compile Include="Crawling\Client.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="Crawling\Crawler.cs" />
+    <Compile Include="Crawling\CrawlerController.cs" />
+    <Compile Include="Crawling\HtmlParser.cs" />
+    <Compile Include="Logger.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sanity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
