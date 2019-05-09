@@ -25,10 +25,9 @@ namespace PicCrawler
             {
                 Sanity.Requires(Directory.Exists(LogDir), 
                     new DirectoryNotFoundException(string.Format(GlobalMessages.FILE_OR_DIRECTORY_NOT_EXISTS, "LogDir", LogDir)));
-                string timeStamp = DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss");
-                LogPath = Path.Combine(LogDir, $"log_{timeStamp}.txt");
+                LogPath = Path.Combine(LogDir, $"log_{DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss")}.txt");
                 File.Create(LogPath);
-                WriteLine($"Done: Create log {LogPath}");
+                WriteLine(string.Format(GlobalMessages.LOG_CREATED, LogPath));
             }
         }
 
@@ -39,14 +38,13 @@ namespace PicCrawler
             {
                 ErrorLogPath = Path.Combine(LogDir, $"{LogPath.Split('\\').Last().Replace("log", "log_error")}");
                 File.Create(ErrorLogPath);
-                WriteLine($"Done: Create error log {ErrorLogPath}");
+                WriteLine(string.Format(GlobalMessages.ERROR_LOG_CREATED, ErrorLogPath));
             }
         }
 
         public static void WriteLine(string msg)
         {
-            msg = $"{DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss")}\t|{msg}";
-            File.WriteAllLines(LogPath, new string[] { msg });
+            File.WriteAllLines(LogPath, new string[] { $"{DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss")}\t|{msg}" });
         }
 
         public static void SafeWriteLine(string msg)

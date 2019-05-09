@@ -11,12 +11,12 @@ namespace PicCrawler.Crawling
 {
     abstract class HtmlParser
     {
-        protected Uri RootUri { get; private set; }
+        protected Uri TargetUri { get; private set; }
         protected Stream HtmlStream { get; private set; }
         
         protected HtmlParser(Uri rootUri, Stream htmlStream)
         {
-            RootUri = rootUri;
+            TargetUri = rootUri;
             HtmlStream = htmlStream;
 
             ConfigureParserInfoDone();

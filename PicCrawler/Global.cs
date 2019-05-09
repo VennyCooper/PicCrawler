@@ -8,6 +8,13 @@ namespace PicCrawler
 {
     public static class GlobalMessages
     {
+        #region Initialization messages
+        // {0}: log path
+        public static string LOG_CREATED = "Done: Create log {0}";
+        // {0}: error log path
+        public static string ERROR_LOG_CREATED = "Done: Create error log {0}";
+        #endregion
+
         #region Download
         // {0}: local file path from downloading
         public static string ONE_FILE_DOWNLOADED = "File downloaded as {0}";
