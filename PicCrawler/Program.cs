@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using PicCrawler.Crawling;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,14 +11,25 @@ namespace PicCrawler
 {
     class Program
     {
-        public static bool ValidateUriAccess(string uri)
-        {
-            return Uri.IsWellFormedUriString(uri, UriKind.Absolute) && Uri.TryCreate(uri, UriKind.Absolute, out _);
-        }
-
         static void Main(string[] args)
         {
-            var a = ValidateUriAccess("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1494677827304&di=8e8aaf1a717ae37b73b772ee4728c7ea&imgtype=0&src=http%3A%2F%2Fscimg.jb51.net%2Fallimg%2F141123%2F10-1411231F92W16.jpg");
+            string workDir = @"";
+            string runDir = Path.Combine(workDir, $"run_{DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss")}");
+            string logDir = runDir;
+            string uri = "";
+            
+            Logger.ConfigureLogger(logDir);
+            try
+            {
+                DownloadClient client = new DownloadClient("1", uri, runDir, new PicWebParser());
+                Crawler crawler = new Crawler("1", new CrawlingController(0, 0, 0), client);
+                crawler.StartCrawling();
+            }
+            catch (Exception e)
+            {
+                Logger.SafeWriteError(e.ToString());
+            }
+            
         }
     }
 }

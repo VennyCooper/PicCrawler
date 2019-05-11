@@ -32,6 +32,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HtmlAgilityPack, Version=1.8.7.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\HtmlAgilityPack.1.11.4\lib\netstandard2.0\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,10 +47,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common.cs" />
-    <Compile Include="Crawling\Client.cs" />
+    <Compile Include="Crawling\DownloadClient.cs" />
+    <Compile Include="Crawling\PicWebParser.cs" />
     <Compile Include="Global.cs" />
     <Compile Include="Crawling\Crawler.cs" />
-    <Compile Include="Crawling\CrawlerController.cs" />
+    <Compile Include="Crawling\CrawlingController.cs" />
     <Compile Include="Crawling\HtmlParser.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Program.cs" />
@@ -55,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
